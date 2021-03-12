@@ -21,16 +21,21 @@ pipeline {
                    
                           steps {
                           sshagent(['server3']) {
-				  
-		             sshCommand(
-			 	  
-				  
-			    sh 'ssh -o StrictHostKeyChecking=no root@192.168.172.143' << ENDSSH
+				 
+				  sh '''#!/bin/bash
+		
+				ssh -o StrictHostKeyChecking=no root@192.168.172.143
+				
 				echo "Hello_world" > /var/log/hello.txt
 				 echo "Hello_world" > /var/log/hello2.txt
-				ENDSSH
-				     )
+			    	date
+			    	
+ENDSSH
+'''
 				
+				  
+		        
+			 			
 				
                           }
                           
@@ -44,12 +49,17 @@ pipeline {
                           
                           steps {
                           sshagent(['server4']) {
-				   sshCommand(
-                          sh 'ssh -o StrictHostKeyChecking=no root@192.168.172.147'<< ENDSSH
+				   
+				  sh '''#!/bin/bash
+				
+				ssh -o StrictHostKeyChecking=no root@192.168.172.143
+				
 				echo "Hello_world" > /var/log/hello.txt
 				 echo "Hello_world" > /var/log/hello2.txt
-				ENDSSH
-					   )
+			    	date
+			    	
+ENDSSH
+'''
 		            
                           }
                           
