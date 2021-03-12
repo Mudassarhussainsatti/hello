@@ -28,5 +28,20 @@ pipeline {
                           
 
          }
+		 
+		 
+		 stage ('ssh agent2')  {  
+                          
+                          steps {
+                          sshagent(['server3']) {
+                            echo "Hello_world"
+                          }
+                          
+              }
+                          
+
+         }
+		 
+		 
     }
 }
