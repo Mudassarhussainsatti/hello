@@ -21,17 +21,10 @@ pipeline {
                    
                           steps {
                           sshagent(['server3']) {
-				 
-				  sh '''#!/bin/bash
-		
-				ssh -o StrictHostKeyChecking=no root@192.168.172.143
-				
-				echo "Hello_world" > /var/log/hello.txt
-				 echo "Hello_world" > /var/log/hello2.txt
-			    	date
-			    	
-ENDSSH
-'''
+			
+				  def dockerrun = 'docker run -d -p 8080:8080 mudassarhussain/k8test:v1'
+				  sh 'ssh -o StrictHostKeyChecking=no root@192.168.136.143 ${dockerrun}' 
+			  }
 				
 				  
 		        
@@ -50,16 +43,8 @@ ENDSSH
                           steps {
                           sshagent(['server4']) {
 				   
-				  sh '''#!/bin/bash
-				
-				ssh -o StrictHostKeyChecking=no root@192.168.172.143
-				
-				echo "Hello_world" > /var/log/hello.txt
-				 echo "Hello_world" > /var/log/hello2.txt
-			    	date
-			    	
-ENDSSH
-'''
+				  def dockerrun = 'echo "hello"'
+				  sh 'ssh -o StrictHostKeyChecking=no root@192.168.136.147 ${dockerrun}'
 		            
                           }
                           
