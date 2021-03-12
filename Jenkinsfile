@@ -20,9 +20,11 @@ pipeline {
               stage ('ssh agent')  {  
                    
                           steps {
+						  
+						  def dockerrun = 'docker run -d -p 8080:8080 mudassarhussain/k8test:v1'
                           sshagent(['server3']) {
 			
-				  def dockerrun = 'docker run -d -p 8080:8080 mudassarhussain/k8test:v1'
+				  
 				  sh 'ssh -o StrictHostKeyChecking=no root@192.168.136.143 ${dockerrun}' 
 			  }
 				
@@ -41,9 +43,10 @@ pipeline {
 		 stage ('ssh agent2')  {  
                           
                           steps {
+						   def dockerrun = 'echo "hello"'
                           sshagent(['server4']) {
 				   
-				  def dockerrun = 'echo "hello"'
+				 
 				  sh 'ssh -o StrictHostKeyChecking=no root@192.168.136.147 ${dockerrun}'
 		            
                           }
