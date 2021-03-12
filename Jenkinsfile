@@ -21,7 +21,7 @@ pipeline {
                           
                           steps {
                           sshagent(['server3']) {
-                            sh 'echo "Hello_world" > /var/log/hello.txt'
+                            sh 'sudo echo "Hello_world" > /var/log/hello.txt'
                           }
                           
               }
@@ -34,7 +34,7 @@ pipeline {
                           
                           steps {
                           sshagent(['server4']) {
-                          sh 'echo "Hello_world" > /var/log/hello2.txt'
+                          sh 'sudo echo "Hello_world" > /var/log/hello2.txt'
                           }
                           
               }
