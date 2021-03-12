@@ -33,7 +33,7 @@ pipeline {
 		 stage ('ssh agent2')  {  
                           
                           steps {
-                          sshagent(['server3']) {
+                          sshagent(['server4']) {
                             echo "Hello_world"
                           }
                           
